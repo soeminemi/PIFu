@@ -99,6 +99,7 @@ class Evaluator:
             if self.netC:
                 self.netC.eval()
             save_path = '%s/%s/result_%s.obj' % (opt.results_path, opt.name, data['name'])
+            print('save path:',save_path)
             if self.netC:
                 gen_mesh_color(opt, self.netG, self.netC, self.cuda, data, save_path, use_octree=use_octree)
             else:
@@ -118,6 +119,7 @@ if __name__ == '__main__':
         try:
             print(image_path, mask_path)
             data = evaluator.load_image(image_path, mask_path)
+            print('start eval')
             evaluator.eval(data, True)
         except Exception as e:
            print("error:", e.args)
